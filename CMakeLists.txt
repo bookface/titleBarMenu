@@ -20,11 +20,14 @@ option(QT_STATIC "Use the Static Qt lib" OFF)
 set (CMAKE_AUTOMOC ON)
 set (CMAKE_AUTORCC ON)
 find_package(Qt5 REQUIRED COMPONENTS Core Gui Widgets)
+if (WIN32)
+    set(WinMain Qt5::WinMain)
+endif()
 set(QT_LIBRARIES
     Qt5::Core
     Qt5::Gui
     Qt5::Widgets
-    Qt5::WinMain
+    ${WinMain}
     )
 
 if (QT_STATIC)
