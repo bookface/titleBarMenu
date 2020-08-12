@@ -5,14 +5,19 @@ to the title bar of the program (which is basically a waste of space
 otherwise).
 
 This code implements a title bar window, with drop down menus on the
-title bar of the program. It basically creates a QMainWindow without
-the built-in title bar and creates on to replace it.
+title bar of the program. It creates a QMainWindow without the
+built-in title bar and a title bar to replace it.
+
+It will not work if your QMainWindow has a QToolBar.  Qt insists
+on placing the ToolBar at the top of the Window with no option
+to move it, so it will conflict with the MenuBar created here.
+Still looking for a solution.
 
 The classes are:
 
 BorderLessWindow
-   Creates a plain Window with no decorations.  The Window can be
-   made to be dragable with left mouse, or with both the left
+   Create a plain Window with no decorations.  The Window can be
+   set as dragable with left mouse, or with both the left
    and right mouse buttons.  The default is not draggable and
    left mouse only.
 
@@ -29,10 +34,10 @@ TitleBarWindow
    If using Designer:
       1. promote your QMenuBar to DragableMenu
       2. call TitleBarWindow(false) to disable addTools()
-      3. call addTools(DragableMenu *) with your MenuBar from Designer
+      3. call addTools(DragableMenu *) with your MenuBar created
+         in Designer
 
 WindowWithImage
-   Here's an example program that shows how to implement
-   the TitleBarWindow.
+   An example program.
    
    
