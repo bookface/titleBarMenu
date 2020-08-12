@@ -26,7 +26,7 @@ class BorderLessWindow : public T {
     BorderLessWindow( QWidget *parent = nullptr
                       ,bool dragable = false
                       ,bool useRight = false):T(parent) {
-        setWindowFlags(Qt::FramelessWindowHint);
+        T::setWindowFlags(Qt::FramelessWindowHint);
         _useRight  = useRight;
         _dragable = dragable;
         _useEither = false;
@@ -75,7 +75,7 @@ class BorderLessWindow : public T {
             int dx = event->x() - _mousedownx;
             int dy = event->y() - _mousedowny;
             if (_dragable) {
-                move(x() + dx, y() + dy);
+                T::move(T::x() + dx,T::y() + dy);
             }
         }
     }
@@ -88,7 +88,7 @@ class BorderLessWindow : public T {
     virtual void keyPressEvent (QKeyEvent *k ) {
         if (_closeOnEscape) 
             if (k->key() == Qt::Key_Escape) {
-                close();
+                T::close();
             }
     }
 
