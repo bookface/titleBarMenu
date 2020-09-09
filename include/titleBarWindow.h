@@ -32,7 +32,9 @@ class DragableMenu : public QMenuBar {
     
   public:
 
-    DragableMenu(QWidget *parent):QMenuBar(parent) {_parent = parent;}
+    DragableMenu(QWidget *parent):QMenuBar(parent) {
+        _parent = parent;
+    }
 
   protected:
 
@@ -61,6 +63,7 @@ class DragableMenu : public QMenuBar {
             _parent->move(_parent->x() + dx
                           ,_parent->y() + dy);
         }
+        QMenuBar::mouseMoveEvent(event);
     }
 
     virtual void mouseReleaseEvent(QMouseEvent *event ) override {
